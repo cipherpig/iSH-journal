@@ -23,6 +23,6 @@ git init
  3. create your repo, add it
 use git remote add orgin
  4. authenticate github
- 5. add the [script](bin/journal.ah) and make it executable
+ 5. add the [script](bin/journal.sh) and make it executable
  6. make an alias for it
 
