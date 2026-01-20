@@ -47,7 +47,7 @@ nano ~/journal.sh
 ## paste this:
 [script](bin/journal.sh)
 
-## Make it executable: 
+ Make it executable: 
 - chmod +x ~/journal.sh
 
 8. Initial push: 
