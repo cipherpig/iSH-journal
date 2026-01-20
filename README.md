@@ -17,64 +17,55 @@ because obviously i cant use an already built journaling app
 # iSH Journal – Full Setup (Single Block)
 
 1. Install dependencies (in iSH):
-apk add git nano openssh-client
+- apk add git nano openssh-client
 
 2. Configure Git identity:
-git config --global user.name "Your Name"
-git config --global user.email "you@example.com"
+- git config --global user.name "Your Name"
+- git config --global user.email "you@example.com"
 
 3. Generate SSH key:
-ssh-keygen -t ed25519
-cat ~/.ssh/id_ed25519.pub
+- ssh-keygen -t ed25519
+- cat ~/.ssh/id_ed25519.pub
 
 4. Add the public key to GitHub:
-GitHub → Settings → SSH and GPG keys → New SSH key
+- GitHub → Settings → SSH and GPG keys → New SSH key
 
 Test authentication:
-ssh -T git@github.com
+- ssh -T git@github.com
 
 5. Create local journal repo:
-mkdir ~/journal
-cd ~/journal
-git init
+- mkdir ~/journal
+- cd ~/journal
+- git init
 
 6. Create a private GitHub repo and add remote:
-git remote add origin git@github.com:USERNAME/journal.git
+- git remote add origin git@github.com:USERNAME/journal.git
 
 7. Create the journal script:
 nano ~/journal.sh
 
-Paste:
-#!/bin/sh
-JOURNAL_DIR="$HOME/journal"
-DATE="$(date +%F)"
-FILE="$JOURNAL_DIR/$DATE.md"
-mkdir -p "$JOURNAL_DIR"
-[ ! -f "$FILE" ] && echo "# Journal – $DATE\n" > "$FILE"
-nano "$FILE"
-cd "$JOURNAL_DIR" || exit 1
-git add "$FILE"
-git commit -m "journal: $DATE"
-git push
+## paste this:
+(script)[journal.sh]
 
-Make it executable:
-chmod +x ~/journal.sh
+## Make it executable: 
+- chmod +x ~/journal.sh
 
-8. Initial push:
-cd ~/journal
-touch init.md
-git add .
-git commit -m "initial commit"
-git branch -M main
-git push -u origin main
-rm init.md
+8. Initial push: 
+-cd ~/journal 
+- touch init.md 
+- git add . 
+- git commit -m "initial commit" 
+- git branch -M main
+- git push -u origin main
+- rm init.md”
+
 
 9. Create alias:
-nano ~/.profile
-alias journal='$HOME/journal.sh'
-source ~/.profile
+- nano ~/.profile
+- alias journal='$HOME/journal.sh'
+- source ~/.profile
 
 10. Daily usage:
-journal
+- journal
 
 
