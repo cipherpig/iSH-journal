@@ -45,7 +45,7 @@ Test authentication:
 nano ~/journal.sh
 
 ## paste this:
-(script)[journal.sh]
+[script](bin/journal.sh)
 
 ## Make it executable: 
 - chmod +x ~/journal.sh
