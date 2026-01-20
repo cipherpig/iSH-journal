@@ -29,7 +29,7 @@ because obviously i cant use an already built journaling app
 - test it: ssh -T git@github.com
 6. add the [script](bin/journal.sh) and make it executable
 7. make an alias for it
-- add this to ~/profile - alias journal='$HOME/journal.sh'
+- add this to ~/profile: alias journal='$HOME/journal.sh'
 - reload it: source ~/.profile
 # daily usage
  journal 
