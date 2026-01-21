@@ -1,25 +1,28 @@
 #!/bin/sh
 
-JOURNAL_DIR="$HOME/journal"
+# Config
+JOURNAL_DIR="${JOURNAL_DIR:-$HOME/journal}"
+EDITOR_CMD="${EDITOR:-nano}"
+
 DATE="$(date +%F)"
 FILE="$JOURNAL_DIR/$DATE.md"
 
 mkdir -p "$JOURNAL_DIR"
 
 if [ ! -f "$FILE" ]; then
-  cat <<EOF > "$FILE"
-# Journal b
- $DATE
-
-## Notes
--
-EOF
+  printf "# Journal – %s\n\n" "$DATE" > "$FILE"
 fi
 
-nano "$FILE"
+# Open editor
+"$EDITOR_CMD" "$FILE"
 
 cd "$JOURNAL_DIR" || exit 1
-git add "$FILE"
-git commit -m "journal: $DATE"
-git push
+
+# Only commit if file changed
+if ! git diff --quiet "$FILE"; then
+  git add "$FILE"
+  git commit -m "journal: $DATE"
+  git push
+fi
+
 
